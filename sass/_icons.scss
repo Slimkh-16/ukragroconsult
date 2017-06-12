@@ -1,0 +1,135 @@
+$icon_font_name:"Icons";
+@font-face {
+	font-family:$icon_font_name;
+	src: url('fonts/Icons.eot');
+	src: url('fonts/Icons.eot?#iefix') format('eot'),
+	url('fonts/Icons.woff') format('woff'),
+	url('fonts/Icons.ttf') format('truetype'),
+	url('fonts/Icons.svg#Icons') format('svg');
+}
+[class*='icon-']:before{
+   font-family: $icon_font_name;
+   font-style: normal;
+   font-weight: normal;
+   line-height: 1;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale
+}
+
+.icon-001-tumblr-logo:before {
+	content:'\E001';
+}
+.icon-002-google-plus-symbol:before {
+	content:'\E002';
+}
+.icon-003-odnoklassniki-logo:before {
+	content:'\E003';
+}
+.icon-004-twitter-logo-silhouette:before {
+	content:'\E004';
+}
+.icon-005-facebook-logo:before {
+	content:'\E005';
+}
+.icon-006-youtube:before {
+	content:'\E006';
+}
+.icon-007-instagram-social-network-logo-of-photo-camera:before {
+	content:'\E007';
+}
+.icon-008-vk:before {
+	content:'\E008';
+}
+.icon-category-amulets:before {
+	content:'\E009';
+}
+.icon-category-bracelets:before {
+	content:'\E00A';
+}
+.icon-category-brilliants-jewelery:before {
+	content:'\E00B';
+}
+.icon-category-chains:before {
+	content:'\E00C';
+}
+.icon-category-crosses:before {
+	content:'\E00D';
+}
+.icon-category-earring:before {
+	content:'\E00E';
+}
+.icon-category-laces:before {
+	content:'\E00F';
+}
+.icon-category-men-rings:before {
+	content:'\E010';
+}
+.icon-category-necklace:before {
+	content:'\E011';
+}
+.icon-category-pendants:before {
+	content:'\E012';
+}
+.icon-category-wedding-rings:before {
+	content:'\E013';
+}
+.icon-category-women-rings:before {
+	content:'\E014';
+}
+.icon-fb:before {
+	content:'\E015';
+}
+.icon-google-pluse:before {
+	content:'\E016';
+}
+.icon-hands:before {
+	content:'\E017';
+}
+.icon-ico-dostavka-page-02:before {
+	content:'\E018';
+}
+.icon-ico-dostavka-page:before {
+	content:'\E019';
+}
+.icon-instagram:before {
+	content:'\E01A';
+}
+.icon-link:before {
+	content:'\E01B';
+}
+.icon-list-logo:before {
+	content:'\E01C';
+}
+.icon-mail:before {
+	content:'\E01D';
+}
+.icon-map-UA:before {
+	content:'\E01E';
+}
+.icon-mobile-phone:before {
+	content:'\E01F';
+}
+.icon-ok:before {
+	content:'\E020';
+}
+.icon-phone:before {
+	content:'\E021';
+}
+.icon-pin-map:before {
+	content:'\E022';
+}
+.icon-shema:before {
+	content:'\E023';
+}
+.icon-tumblr:before {
+	content:'\E024';
+}
+.icon-twitter:before {
+	content:'\E025';
+}
+.icon-vk:before {
+	content:'\E026';
+}
+.icon-youtube:before {
+	content:'\E027';
+}

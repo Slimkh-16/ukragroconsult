@@ -1,0 +1,165 @@
+.overlay
+footer.footer
+  .footer-container
+    .container
+      .row.foot-top
+        .col.l3.m6.s12
+          .foot-nav
+            .foot-nav__head Каталог
+            ul
+              li.active
+                span Изделия с бриллиантами
+              li
+                a(href="#") Женские кольца
+              li
+                a(href="#") Мужские печатки
+              li
+                a(href="#") Серьги
+              li
+                a(href="#") Обручальные кольца
+              li
+                a(href="#") Браслеты
+              li
+                a(href="#") Цепи
+              li
+                a(href="#") Кулоны
+              li
+                a(href="#") Кресты Ладанки
+              li
+                a(href="#") Колье Шнурки Булавки
+
+        .col.l3.m6.s12
+          .foot-nav
+            .foot-nav__head Помощь клиентам
+            ul
+              li
+                a(href="#") Доставка и оплата
+              li
+                a(href="#") Гарантия
+              li
+                a(href="#") Кредит
+              li
+                a(href="#") Вопросы и ответы
+              li
+                a(href="#") Как подобрать ювелирное украшение
+              li
+                a(href="#") Советы по уходу за ювелирными изделиями
+              li
+                a(href="#") Фото упаковки
+              li
+                a(href="#") Как узнать размер кольца
+              li
+                a(href="#") Проба золота 585
+        .col.l3.m6.s12
+          .foot-nav
+            .foot-nav__head О магазине
+            ul
+              li
+                a(href="#") Контакты
+              li
+                a(href="#") Наши магазины
+              li
+                a(href="#") Отзывы
+        .col.l3.m6.s12
+          .foot-nav
+            .foot-nav__head Новости  Eurogold
+            ul
+              li
+                a(href="#") Новости
+              li
+                a(href="#") Статьи и обзоры
+              li
+                a(href="#") Акции
+          .social
+            ul
+              li
+                a(href="#",target="_blank")
+                  span.icon-008-vk
+                  | Вконтакте
+              li
+                a(href="#",target="_blank")
+                  span.icon-007-instagram-social-network-logo-of-photo-camera
+                  | Instagram
+              li
+                a(href="#",target="_blank")
+                  span.icon-006-youtube
+                  | YouTube
+              li
+                a(href="#",target="_blank")
+                  span.icon-005-facebook-logo
+                  | Facebook
+              li
+                a(href="#",target="_blank")
+                  span.icon-005-facebook-logo
+                  | Instagram
+              li
+                a(href="#",target="_blank")
+                  span.icon-004-twitter-logo-silhouette
+                  | Twitter
+              li
+                a(href="#",target="_blank")
+                  span.icon-003-odnoklassniki-logo
+                  | Одноклассники
+              li
+                a(href="#",target="_blank")
+                  span.icon-002-google-plus-symbol
+                  | Google+
+              li
+                a(href="#",target="_blank")
+                  span.icon-001-tumblr-logo
+                  | Tumblr
+      .row.foot-bottom
+        .col.l9.m6.s12.align-left
+          p Служба поддержки: 1-800-987-65-43 (пн-сб, 10:00-19:00)
+          p © 2013-
+            span.yearN 2017
+            |   Все права защищены. Право на использование торговой марки EUROGOLD принадлежит ИП "Коровин Е.Н."
+          p Все материалы, представленные на сайте, являются собственностью ИМ "Коровин Е.Н." Любое использование этих материалов на других сайтах, в социальных сетях, в электронном или печатном виде запрещено законодательством Российской Федерации.
+        .col.l3.m6.s12.align-right
+          | Мы принимаем к оплате:
+          img(src="images/foot.png",alt="")
+#modal-thank.modal
+  .modal-content
+    span.modal-action.modal-close.modal-close--top
+      span.icon-25-plus-tovar
+    .container.align-center
+      .modal-head
+        | Спасибо, Ваша заявка отправлена!
+      .modal-body
+        p Наш менеджер свяжется с Вами в течение 15 минут.
+        .modal-foot.clearfix
+          span.waves-effect.waves-light.btn.modal-close.left Закрыть
+#modal-product.modal
+  .modal-content
+    span.modal-action.modal-close.modal-close--top
+      span.icon-25-plus-tovar
+    .container.align-center
+      .modal-head
+        | Товар добавлен в корзину!
+      .modal-body
+        .cart-container-box
+          .cart-row(data-product-id="10")
+            .cart-col.cart-col--1
+              a(href='#').cart-col-item
+                span.cart-col__img
+                  img(src="assets/images/cart1.jpg", alt="")
+                span.cart-col__txt Protherm Рысь Lynx 18/25 MKV газовый двухконтурный конденсационный настенный котел
+            .cart-col.cart-col--2
+              .quantity-wrap
+                span.minus-icon −
+                input.quantity(type='text', value='1', data-price-product='14000')
+                span.plus-icon +
+
+            .cart-col.cart-col--3
+              span.js_item_total 14000
+              | &nbsp; грн
+        .modal-foot.clearfix
+          span.waves-effect.waves-light.modal-close.left
+            span.icon-16-arrow-link
+            | Продолжить покупки
+          a(href="#").btn.btn--green.right
+            .btn-animate
+            span Оформить заказ
+script(type='text/javascript', src='js/all-plugins.min.js')
+script(type='text/javascript', src='http://maps.googleapis.com/maps/api/js?key=AIzaSyAuu-TeMzXX-X7rBtKjmmVPt12Y_9LtHbY&language=ru')
+script(type='text/javascript', src='js/main.js')

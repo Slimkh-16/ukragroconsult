@@ -1,0 +1,34 @@
+/*--------- font-face ---------*/
+@font-face {
+    font-family: 'PtSans-Bold';
+    src: url('fonts/2223.eot');
+    src: url('fonts/2223.eot') format('embedded-opentype'),
+         url('fonts/2223.woff') format('woff'),
+         url('fonts/2223.ttf') format('truetype'),
+         url('fonts/2223.svg#2223') format('svg');
+}
+@font-face {
+    font-family: 'PtSans-Regular';
+    src: url('fonts/2221.eot');
+    src: url('fonts/2221.eot') format('embedded-opentype'),
+         url('fonts/2221.woff') format('woff'),
+         url('fonts/2221.ttf') format('truetype'),
+         url('fonts/2221.svg#2221') format('svg');
+}
+@font-face {
+    font-family: 'PlayfairDisplay-Bold';
+    src: url('fonts/PlayfairDisplay-Bold.eot');
+    src: url('fonts/PlayfairDisplay-Bold.eot') format('embedded-opentype'),
+         url('fonts/PlayfairDisplay-Bold.woff') format('woff'),
+         url('fonts/PlayfairDisplay-Bold.ttf') format('truetype'),
+         url('fonts/PlayfairDisplay-Bold.svg#PlayfairDisplay-Bold') format('svg');
+}
+@font-face {
+  font-family: 'PlayfairDisplaySC-Regular';
+  src: url('fonts/PlayfairDisplaySC-Regular.eot');
+  src: url('fonts/PlayfairDisplaySC-Regular.eot') format('embedded-opentype'),
+  url('fonts/PlayfairDisplaySC-Regular.woff') format('woff'),
+  url('fonts/PlayfairDisplaySC-Regular.ttf') format('truetype'),
+  url('fonts/PlayfairDisplaySC-Regular.svg#PlayfairDisplaySC-Regular') format('svg');
+}
+

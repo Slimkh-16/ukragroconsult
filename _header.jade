@@ -1,0 +1,93 @@
+header.header.clearfix
+  .container
+    .menu-button-general(data-activates="slide-out")
+      span
+      span
+      span
+    .header-top.clearfix
+      .header-top__left
+        ul
+          li
+            a(href="#") Доставка и оплата
+          li
+            a(href="#") Гарантия
+          li
+            a(href="#") О компании
+          li
+            a(href="#") Новости
+      .header-top__right
+        | 1-800-987-65-43
+    .header-middle.clearfix
+      .header-search
+        form(action="#")
+          button(type="submit")
+            span.icon-
+          input(type="text",value="",placeholder="Что вы ищете?")
+      .header-logo
+        a(href="#")
+          img(src="images/Euro Gold - Logo.svg",alt="")
+      .header-middle__right
+        a(href="#").user-button
+          span.icon-user
+          | Профиль
+        a(href="#").cart-button
+          span.icon-cart
+          | Ваш заказ
+          span.count-cart 1
+    .header-bottom
+      .navigation-catalog
+        ul
+          li
+            a(href="#",data-activates='drop-catalog-1').dropdown-head-nav
+              span Изделия с   бриллиантами
+          li
+            a(href="#",data-activates='drop-catalog-2').dropdown-head-nav
+              span Женские  кольца
+          li
+            a(href="#")
+              span Мужские  печатки
+          li
+            a(href="#")
+              span Серьги
+          li
+            a(href="#")
+              span Обручальные кольца
+          li
+            a(href="#")
+              span Браслеты
+          li
+            a(href="#")
+              span Цепи
+          li
+            a(href="#")
+              span Кулоны
+          li
+            a(href="#")
+              span Кресты, ладанки
+          li
+            a(href="#")
+              span Колье, шнурки, булавки
+
+        ul#drop-catalog-1.dropdown-content
+          li
+            a(href='#') Женские кольца
+          li
+            a(href='#') Мужские кольца
+          li
+            a(href='#') Серьги
+          li
+            a(href='#') Кресты
+          li
+            a(href="#") Кулоны
+        ul#drop-catalog-2.dropdown-content
+          li
+            a(href='#') Золотые кольца
+          li
+            a(href='#') Серебрянные кольца
+
+
+
+
+
+
+
