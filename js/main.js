@@ -61,8 +61,100 @@ function preloader() {
             this.validateForm();
             //mobileMenu
             this.mobileMenu();
+            //cartFunction
+            this.cartFunction();
+            //filterFunction
+            if (document.querySelector('.filter-box') !== null) {
+                this.filterFunction();
+            }
+            //productFunction
+            if (document.querySelector('.product-char-col .change-size') !== null) {
+                this.productFunction();
+            }
         },
+        productFunction: function(){
+          $('.change-size span').on('click',function(){
+              var weightProd = $(this).data('size'),
+                  priceProd  = $(this).data('price');
+              $('.change-size span').removeClass('active');
+              $(this).addClass('active');
+              $('.js_weight').text(weightProd);
+              $('.js_prod_price').text(priceProd);
+          });
+        },
+        filterFunction: function(){
+          $('.filter-box__head ').on('click',function(){
+            $(this).parents('.filter-box').toggleClass('visible');
+            $(this).parents('.filter-box').find('.filter-bix__body').slideToggle(500);
+          });
+        },
+        cartFunction: function(){
+            //cart
+            $('.js_cart').on('click',function(){
+                $('.cart-section').toggleClass('visible');
+                $('.overlay-cart').toggleClass('visible');
+                $('body').toggleClass('noscroll');
+                if($('.header').hasClass('fix')) {
+                    if(window.innerWidth < 1023) {
+                        heightcart (20)
+                    } else {
+                        heightcart (10)
+                    }
 
+                } else {
+                    heightcart (0)
+                }
+                return false;
+            });
+            $(window).resize(function(){
+                if($('.header').hasClass('fix')) {
+                    if(window.innerWidth < 1023) {
+                        heightcart (20)
+                    } else {
+                        heightcart (10)
+                    }
+
+                } else {
+                    heightcart (0)
+                }
+            });
+            $('.js_close_cart, .cont-shop').on('click',function(){
+                $('.cart-section').removeClass('visible');
+                $('.overlay-cart').removeClass('visible');
+                $('body').removeClass('noscroll');
+            });
+            var totalPrice,thisValue,priceItem,rowCart;
+            $('.count-cart').text($('.cart-body table tr').length);
+            totalCart();
+            $('.cart-body-table').find('.quantity').on('input', function () {
+                this.value = this.value.replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '');
+            });
+            $('.cart-body-table').find('.quantity').on('blur ', function () {
+                rowCart = $(this).parents('tr').data('product-id');
+                priceItem = parseFloat($('[data-product-id="'+ rowCart +'"]').find('.quantity').data('price-product')), thisValue = parseFloat($(this).val());
+                $('[data-product-id="'+ rowCart +'"]').find('.js_total_product').text(priceItem * thisValue);
+                totalCart();
+            });
+            $(document).on('click', '.js_remove', function () {
+                rowCart = $(this).parents('tr').data('product-id');
+                $('[data-product-id="'+ rowCart +'"]').remove();
+                $('.count-cart').text($('.cart-body table tr').length);
+                console.log($('.cart-body table tr').length )
+                if ($('.cart-body table tr').length === 0) {
+
+                    $('.cart-body-table').html('<div class="align-center empty-cart">Корзина пуста</div>');
+                }
+                totalCart();
+            });
+            function totalCart() {
+                totalPrice = 0;
+                $('.cart-body-table .js_total_product').each(function(i,item){
+                    var thisPrice = parseInt($(item).text().replace(/\D+/g,""));
+                    totalPrice = totalPrice + thisPrice;
+                });
+                $('.js_total').text(totalPrice);
+            }
+        },
         mapFunction: function () {
             if ($('#map').length > 0) {
                 var coords = $('#map').data('coords').split(',');
@@ -84,41 +176,6 @@ function preloader() {
             }
         },
         mobileMenu: function () {
-            $('.menu-button').on('click',function(){
-                if($(this).hasClass('open')) {
-                    $(this).removeClass('open');
-                    $('html').removeClass('open-menu open-level-1');
-                    $('.mobile-level-level').removeClass('visible');
-                    $('.mb-lev-1').removeClass('active');
-                    $('.mobile-level').removeClass('active');
-                } else {
-                    $(this).addClass('open');
-                    $('html').addClass('open-menu');
-                    $('.mobile-level-level').addClass('visible');
-                }
-            });
-            $('.mb-lev-1').on('click',function(){
-
-                if($(this).hasClass('active')) {
-                    $(this).removeClass('active');
-                    $(this).parents('li').find('.mobile-level').removeClass('active');
-                    $('html').removeClass('open-level-1');
-                }else {
-                    $('.mb-lev-1').removeClass('active');
-                    $('.mobile-level').removeClass('active');
-                    $(this).addClass('active');
-                    $(this).parents('li').find('.mobile-level').addClass('active');
-                    $('html').addClass('open-level-1');
-                }
-
-                return false;
-            });
-            $('.mobile-level-back').on('click',function(){
-                $('.mobile-level').removeClass('active');
-                $('.mobile-level-menu a[class*="icon-"]').removeClass('active');
-                $('html').removeClass('open-level-1');
-                return false;
-            });
             $(document).on('click','.drop-nav',function(){
                 $(this).parents('.with-menu').toggleClass('active');
                 $(this).parents('.with-menu').find('ul').slideToggle(500, "easeOutCubic");
@@ -210,32 +267,39 @@ function preloader() {
                 paginationClickable: true,
                 parallax: true
             });
-            var swiper_brand = new Swiper('.brand-slider .swiper-container', {
+            var swiper_new = new Swiper('.new-product .swiper-container', {
                 loop: true,
-                autoplay: 2000,
-                speed: 2000,
-                slidesPerView: 6,
-                spaceBetween: 15,
+                speed: 1000,
+                slidesPerView: 4,
+                spaceBetween: 0,
                 breakpoints: {
-                    1400: {
-                        slidesPerView: 5,
-                        spaceBetween: 15
+                    992: {
+                        slidesPerView: 3
                     },
-                    1300: {
-                        slidesPerView: 4,
-                        spaceBetween: 15
-                    },
-                    805: {
-                        slidesPerView: 3,
-                        spaceBetween: 15
-                    },
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 15
+                    767: {
+                        slidesPerView: 2
                     },
                     500: {
-                        slidesPerView: 2,
-                        spaceBetween: 10
+                        slidesPerView: 1
+                    }
+                }
+            });
+            var swiper_new = new Swiper('.popular-product .swiper-container', {
+                loop: true,
+                speed: 1000,
+                slidesPerView: 4,
+                spaceBetween: 0,
+                nextButton: '.popular-product .swiper-button-next',
+                prevButton: '.popular-product .swiper-button-prev',
+                breakpoints: {
+                    992: {
+                        slidesPerView: 3
+                    },
+                    767: {
+                        slidesPerView: 2
+                    },
+                    500: {
+                        slidesPerView: 1
                     }
                 }
             });
@@ -338,18 +402,64 @@ function preloader() {
             }
         },
         materialPlagins: function () {
+            //product char list
+            $('.tab-box .product-char .product-char-row:gt(8)').hide();
+            $('.js_all_char').on('click',function(){
+               if($(this).hasClass('active')) {
+                   $(this).removeClass('active');
+                   $('.tab-box .product-char .product-char-row:gt(8)').hide('slow');
+               } else {
+                   $(this).addClass('active');
+                   $('.tab-box .product-char .product-char-row').show('slow');
+               }
+            });
+            //product char list
+            //zoom plagin
+            if(isMobile === false) {
+                $(".product-big-images img").elevateZoom({
+                    gallery:'gal-product',
+                    cursor: 'pointer',
+                    galleryActiveClass: 'active',
+                    zoomType	: "lens",
+                    lensShape : "round",
+                    lensSize : 255,
+                    imageCrossfade: true
+                });
+            }
+            //zoom plagin
+            // catalog
+            $('.to-wishlist,.to-compare').on('click',function(){
+               $(this).toggleClass('active');
+               return false;
+            });
+            $('.materialboxed').materialbox();
+            //massonry
+            if(document.querySelector('.grid') !== null) {
+                var msnry = new Masonry( '.grid', {
+                    itemSelector: '.grid-item',
+                    gutter: 30
+                });
+            }
+
+            //hidden text
+            $('.prod-txt').liTextLength({
+                length: 70,
+                afterLength: '...',
+                fullText:false
+            });
+
             $('.menu-button-general').sideNav({
-                    menuWidth: 240,
+                    menuWidth: 280,
                     edge: 'left',
                     closeOnClick: true,
                     draggable: true
                 }
             );
-            $('.collapsible').collapsible();
             $('.dropdown-button').dropdown();
             if(isMobile === false) {
                 $('.dropdown-head-nav').dropdown({
-                    hover: true
+                    hover: true,
+                    outDuration:500
                 });
             }
             $('select').not('.my_select_box').material_select();
@@ -364,102 +474,6 @@ function preloader() {
                 }
             });
             $('.materialboxed').materialbox();
-            // chart
-            // chartFunc();
-            function chartFunc() {
-                var chart = new CanvasJS.Chart("chartContainer",
-                    {
-                        title:{
-                            text: "Speed And Distance Time Graph"
-                        },
-                        animationEnabled: true,
-                        toolTip: {
-                            shared: true,
-                            content: function(e){
-                                var body ;
-                                var head ;
-                                head = "<span style = 'color:DodgerBlue; '><strong>"+ (e.entries[0].dataPoint.x)  + " sec</strong></span><br/>";
-
-                                body = "<span style= 'color:"+e.entries[0].dataSeries.color + "'> " + e.entries[0].dataSeries.name + "</span>: <strong>"+  e.entries[0].dataPoint.y + "</strong>  m/s<br/> <span style= 'color:"+e.entries[1].dataSeries.color + "'> " + e.entries[1].dataSeries.name + "</span>: <strong>"+  e.entries[1].dataPoint.y + "</strong>  m";
-
-                                return (head.concat(body));
-                            }
-                        },
-                        axisY:{
-                            title: "Speed",
-                            includeZero: false,
-                            suffix : " m/s",
-                            lineColor: "#369EAD"
-                        },
-                        axisY2:{
-                            title: "Distance",
-                            includeZero: false,
-                            suffix : " m",
-                            lineColor: "#C24642"
-                        },
-                        axisX: {
-                            title: "Time",
-                            suffix : " s"
-                        },
-                        data: [
-                            {
-                                type: "spline",
-                                name: "speed",
-                                dataPoints: [
-                                    {x: 0 , y: 0} ,
-                                    {x: 11 , y: 8.2} ,
-                                    {x: 47 , y: 41.7} ,
-                                    {x: 56 , y: 16.7} ,
-                                    {x: 120 , y: 31.3} ,
-                                    {x: 131 , y: 18.2} ,
-                                    {x: 171 , y: 31.3} ,
-                                    {x: 189 , y: 61.1} ,
-                                    {x: 221 , y: 40.6} ,
-                                    {x: 232 , y: 18.2} ,
-                                    {x: 249 , y: 35.3} ,
-                                    {x: 253 , y: 12.5} ,
-                                    {x: 264 , y: 16.4} ,
-                                    {x: 280 , y: 37.5} ,
-                                    {x: 303 , y: 24.3} ,
-                                    {x: 346 , y: 23.3} ,
-                                    {x: 376 , y: 11.3} ,
-                                    {x: 388 , y: 8.3} ,
-                                    {x: 430 , y: 1.9} ,
-                                    {x: 451 , y: 4.8}
-                                ]
-                            },
-                            {
-                                type: "spline",
-                                axisYType: "secondary"  ,
-                                name: "distance covered",
-                                dataPoints: [
-                                    {x: 0 , y: 0},
-                                    {x: 11 , y: 90} ,
-                                    {x: 47 , y: 1590} ,
-                                    {x: 56 , y: 1740} ,
-                                    {x: 120 , y: 3740} ,
-                                    {x: 131 , y: 3940} ,
-                                    {x: 171 , y: 5190} ,
-                                    {x: 189 , y: 6290} ,
-                                    {x: 221 , y: 7590} ,
-                                    {x: 232 , y: 7790} ,
-                                    {x: 249 , y: 8390} ,
-                                    {x: 253 , y: 8440} ,
-                                    {x: 264 , y: 8620} ,
-                                    {x: 280 , y: 9220} ,
-                                    {x: 303 , y: 9780} ,
-                                    {x: 346 , y: 10780} ,
-                                    {x: 376 , y: 11120} ,
-                                    {x: 388 , y: 11220} ,
-                                    {x: 430 , y: 11300} ,
-                                    {x: 451 , y: 11400}
-                                ]
-                            }
-                        ]
-                    });
-
-                chart.render();
-            }
         },
         appearFunction: function () {
             if (isMobile === false) {
@@ -476,7 +490,7 @@ function preloader() {
                             elem.addClass(animation + " visible");
                         }
                     }
-                }, {accX: 0, accY: -500});
+                }, {accX: 0, accY: -200});
             } else {
                 $('.animated').each(function () {
                     var animation = $(this).data('animation');
@@ -489,36 +503,21 @@ function preloader() {
     genFunc.initialize();
     window.addEventListener('scroll', function () {
         scrollTopPosition = window.pageYOffset ? window.pageYOffset : (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
+        if(scrollTopPosition > 50) {
+            document.querySelector('.header').classList.add('fix')
+        } else {
+            document.querySelector('.header').classList.remove('fix')
+        }
     });
     window.addEventListener('load', function () {
-        containerHeight = window.innerHeight - document.querySelector('.header').clientHeight - document.querySelector('.footer').clientHeight;
-        if (document.querySelector('.height_form') !== undefined) {
-            heightContainer('.height_form',containerHeight);
-        }
-        if(document.querySelector('.file-body') !== undefined) {
-            heightBlock('.file-body')
-        }
+
     });
     window.addEventListener('resize', function () {
-        containerHeight = window.innerHeight - document.querySelector('.header').clientHeight - document.querySelector('.footer').clientHeight;
-        if (document.querySelector('.height_form') !== undefined) {
-            heightContainer('.height_form',containerHeight);
-        }
-        if(document.querySelector('.file-body') !== undefined) {
-            heightBlock('.file-body')
-        }
+
     });
-    function heightContainer(elem,elemHeight){
-        for(var k = 0; k < document.querySelectorAll(elem).length; k++) {
-            document.querySelectorAll(elem)[k].style.minHeight = elemHeight + 'px'
-        }
-    };
-    function captionPosition(element) {
-        [].slice.call(document.querySelectorAll(element)).forEach(function (i, item) {
-            var thisHeight = i.clientHeight;
-            i.style.marginTop = -thisHeight / 2 + 'px';
-        });
-    };
+    function heightcart (coof) {
+        document.querySelector('.cart-section').style.maxHeight = window.innerHeight - document.querySelector('.cart-section').offsetTop + coof + 'px';
+    }
     function heightBlock(ell) {
         var elem = document.querySelectorAll(ell);
         var maxH = 0;
@@ -533,4 +532,3 @@ function preloader() {
         }
     };
 })();
-

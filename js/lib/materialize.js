@@ -2440,7 +2440,7 @@ if (jQuery) {
             overflow: '',
             width: ''
           });
-
+            $('body').removeClass('open-menu');
           $('#sidenav-overlay').velocity({opacity: 0}, {duration: 200,
               queue: false, easing: 'easeOutQuad',
             complete: function() {
@@ -2648,7 +2648,7 @@ if (jQuery) {
             removeMenu();
           }
           else {
-
+              $('body').addClass('open-menu');
             // Disable Scrolling
             var $body = $('body');
             var $overlay = $('<div id="sidenav-overlay"></div>');

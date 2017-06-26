@@ -7,7 +7,7 @@ html
     //if lt IE 9
       script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
-  body.dark-theme
+  body
     noscript
       div
         strong Для полной функциональности этого сайта необходимо включить JavaScript. Вот 
@@ -23,7 +23,9 @@ html
     // PRELOADER
     .page-wrap
       // wrapper start
+      include _mobile__nav
       .wrapper
+        .overlay-cart
         // header SECTION
         include _header
         // header SECTION
@@ -31,21 +33,368 @@ html
         section.general-slider
           .swiper-container
             .swiper-wrapper
-              .swiper-slide
-                .general-slider-caption(data-swiper-parallax="-100")
-                  .caption-head Второе украшение в подарок
-                  | Выберите свое украшение и получите второе в подарок
-                  a(href="#").btn.
-                .general-slide-img(data-swiper-parallax="-300")
-                  img(src="assets/images/slider-img.jpg",alt="")
-              .swiper-slide
-                .general-slider-caption(data-swiper-parallax="-100")
-                  .caption-head Второе украшение в подарок
-                  | Выберите свое украшение и получите второе в подарок
-                  a(href="#").btn.
-                .general-slide-img(data-swiper-parallax="-300")
-                  img(src="assets/images/slider-img.jpg",alt="")
+              .swiper-slide(style="background:#3a2720 url(assets/images/banner.png) no-repeat 50% 50%")
+                .container
+                  .general-slider-caption.general-slider-caption--white(data-swiper-parallax="-100")
+                    .caption-head Изящное признание
+                    span Выберите свое украшение и получите второе в подарок
+                    a(href="#").btn.waves-effect.waves-light Смотреть каталог
+              .swiper-slide(style="background:#e7fdee")
+                .container
+                  .general-slider-caption(data-swiper-parallax="-100")
+                    .caption-head Яркие краски весны
+                    span Новая коллекция украшений с изумрудами
+                    a(href="#").btn.waves-effect.waves-light  Смотреть каталог
+                  img(src="assets/images/ban-img.png",alt="",data-swiper-parallax="-300").general-slide-img
+              .swiper-slide(style="background:#512e17 url(assets/images/banner2.jpg) no-repeat 50% 50%")
+                .container
+                  .general-slider-caption.general-slider-caption--white(data-swiper-parallax="-100")
+                    .caption-head Подарки к Рождеству
+                    span Спешите выбрать Рождественские подарки для ваших любимых
+                    a(href="#").btn.waves-effect.waves-light  Смотреть каталог
+              .swiper-slide(style="background:#f5f5f5")
+                .container
+                  .general-slider-caption(data-swiper-parallax="-100")
+                    .caption-head Второе украшение в подарок
+                    span Выберите свое украшение и получите второе в подарок
+                    a(href="#").btn.waves-effect.waves-light  Смотреть каталог
+                    span.det-capt Под подарком подразумевается изделие, стоимость которого не превышает 50% стоимости первого изделия.
+                      br
+                      | Срок действия акции: 1.12.2014—18.01.2015
+                  img(src="assets/images/ban-img.png",alt="",data-swiper-parallax="-300").general-slide-img
             .swiper-pagination
+        //big nav
+        section.big-nav
+          .container
+            .row
+              .col.l6.s12
+                .big-nav-item
+
+                  .big-nav__txt
+                    a(href="#")
+                      span Духовные
+                      br
+                      span объятия
+                    br
+                    .big-nav__det Кресты и ладанки
+                  .big-nav__img
+                    a(href="#")
+                      img(src="assets/images/big-nav1.png",alt="")
+              .col.l6.s12
+                .big-nav-item
+                  .big-nav__txt
+                    a(href="#")
+                      span Искусство
+                      br
+                      span обольщения
+                    br
+                    .big-nav__det Изделия с бриллиантами
+                  .big-nav__img
+                    a(href="#")
+                      img(src="assets/images/big-nav2.png",alt="")
+
+        //catalog-tab
+        section.catalog-tab
+          .container
+            ul.tabs
+              li
+                .small-heading Украшения
+              li.tab
+                a.active(href='#tab1') из золота
+              li.tab
+                a(href='#tab2') из серебра
+            .tab-content
+              #tab1.tab-pane
+                .row
+                  mixin catalog-item(img,title)
+                    a(href="#").col.l3.m4.s6.catalog-item
+                      .catalog-item__img
+                        img(src="images/#{img}.svg",alt="")
+                      span= title
+                  +catalog-item('category-brilliants-jewelery','Изделия с бриллиантами')
+                  +catalog-item('category-women-rings','Женские кольца ')
+                  +catalog-item('category-men-rings','Мужские печатки')
+                  +catalog-item('category-earring','Серьги')
+                  +catalog-item('category-wedding-rings','Обручальные кольца')
+                  +catalog-item('category-bracelets','Браслеты')
+                  +catalog-item('category-chains','Цепи')
+                  +catalog-item('category-pendants','Кулоны')
+                  +catalog-item('category-crosses','Кресты')
+                  +catalog-item('category-amulets','Ладанки')
+                  +catalog-item('category-necklace','Колье')
+                  +catalog-item('category-laces', 'Шнурки')
+              #tab2.tab-pane tab 2
+
+            .catalog-tab-cont
+              .small-heading Украшения с камнями
+              mixin catalog-item2(img,title)
+                a(href="#").catalog-item
+                  .catalog-item__img
+                    img(src="assets/images/#{img}.png",alt="")
+                  span= title
+              +catalog-item2('br1','Бриллиант')
+              +catalog-item2('br2','Сапфир')
+              +catalog-item2('br3','Топаз')
+              +catalog-item2('br4','Аметист')
+              +catalog-item2('br5','Изумруд')
+              +catalog-item2('br6','Агат')
+              +catalog-item2('br7','Аквамарин')
+              +catalog-item2('br8','Аметист (синтетический)')
+              .clearfix.align-center
+                a(href="#").all-butt.waves-effect.waves-light  Все камни
+        //new product
+        section.new-product
+          .container
+            .heading-section.align-center
+              span Новинки ювелирного магазина
+            .swiper-container
+              .swiper-wrapper
+                .swiper-slide
+                  a(href="#").new-product-item
+                    .new-product-item__img
+                      img(src="assets/images/prod1.jpg",alt="")
+                      .view-prod
+                        | смотреть
+                        span.icon-right
+
+                    .new-product-item__txt
+                      .prod-txt Ладанка из красного золота с ликом «Казанская Божья Матерь», П005/2
+                      .prod-price
+                        b 5 806
+                        | руб.
+                .swiper-slide
+                  a(href="#").new-product-item
+                    .new-product-item__img
+                      img(src="assets/images/prod2.jpg",alt="")
+                      .view-prod
+                        | смотреть
+                        span.icon-right
+                    .new-product-item__txt
+                      .prod-txt Золотой браслет «Бисмарк», Б013-4
+                      .prod-price
+                        b 15 806
+                        | руб.
+                .swiper-slide
+                  a(href="#").new-product-item
+                    .new-product-item__img
+                      img(src="assets/images/prod3.jpg",alt="")
+                      .view-prod
+                        | смотреть
+                        span.icon-right
+                    .new-product-item__txt
+                      .prod-txt Золотой миниатюрный крест с распятием, КР002
+                      .prod-price
+                        b 15 806
+                        | руб.
+                .swiper-slide
+                  a(href="#").new-product-item
+                    .new-product-item__img
+                      img(src="assets/images/prod3.jpg",alt="")
+                      .view-prod
+                        | смотреть
+                        span.icon-right
+                    .new-product-item__txt
+                      .prod-txt Золотой миниатюрный крест с распятием, КР002 Золотой миниатюрный крест с распятием, КР002 Золотой миниатюрный крест с распятием, КР002
+                      .prod-price
+                        b 15 806
+                        | руб.
+                .swiper-slide
+                  a(href="#").new-product-item
+                    .new-product-item__img
+                      img(src="assets/images/prod4.jpg",alt="")
+                      .view-prod
+                        | смотреть
+                        span.icon-right
+                    .new-product-item__txt
+                      .prod-txt Кожаный шнурок со вставками из белого золота,              Ш003Б
+                      .prod-price
+                        b 15 806
+                        | руб.
+
+        //testimonials section
+        section.testimonials-section
+          .container
+            .heading-section
+              a(href="#")
+                span Отзывы наших покупателей
+            .row
+              .col.l6.s12
+                .testi-item
+                  .testi-item__img
+                  .testi-item__txt
+                    | Очень довольна обслуживанием, доставкой, все на высшем уровне. Очень красивая упаковка. Все просто супер, кольцо выглядит даже лучше, чем на фото. Буду всем рекомендовать. Спасибо!!!
+                    .testi-author
+                      | — Лариса
+                      span 6 мая 2015
+              .col.l6.s12
+                .testi-item
+                  .testi-item__img
+                  .testi-item__txt
+                    | Первое: Удовольствие доставило от общения с консультантом Ольгой - Спасибо. Быстрая доставка. Кольцо смотрится очень оригинально,посадка камней достойна этих милых камушек. Рекомендую всем этот сайт.
+                    .testi-author
+                      | — Лариса
+                      span 6 мая 2015
+              .col.l6.s12
+                .testi-item
+                  .testi-item__img
+                    img(src="assets/images/br5.png",alt="")
+                  .testi-item__txt
+                    | Прекрасный кулон, 3 компонента счастья: Вера, Надежда, Любовь. Кулон соответствует описанию, и даже красивее) Доставка в срок. Прекрасное обслуживание, доброжелательные и отзывчивые менеджеры, которые прикладывают все усилия для ...
+                    .testi-author
+                      | — Лариса
+                      span 6 мая 2015
+              .col.l6.s12
+                .testi-item
+                  .testi-item__img
+                    img(src="assets/images/br3.png",alt="")
+                  .testi-item__txt
+                    | гарна класична підвіска, всім рекомендую, діамант - просто шик!!!
+                    .testi-author
+                      | — Лариса
+                      span 6 мая 2015
+
+            .align-center
+              a(href="#").all-testi.big-nav__det Читать все отзывы
+        //popular product
+        section.popular-product
+          .container
+            .heading-section.align-center
+              span Популярные ювелирные изделия
+            .popular-product-slider
+              .swiper-container
+                .swiper-wrapper
+                  .swiper-slide
+                    a(href="#").new-product-item
+                      .new-product-item__img
+                        img(src="assets/images/prod5.jpg",alt="")
+                        .view-prod
+                          | смотреть
+                          span.icon-right
+
+                      .new-product-item__txt
+                        .prod-txt Золотая печатка с агатом и цирконами, КП008
+                        .prod-price
+                          b 5 806
+                          | руб.
+                  .swiper-slide
+                    a(href="#").new-product-item
+                      .new-product-item__img
+                        img(src="assets/images/prod6.jpg",alt="")
+                        .view-prod
+                          | смотреть
+                          span.icon-right
+                      .new-product-item__txt
+                        .prod-txt Золотое кольцо с «багетным» цирконом, КД012
+                        .prod-price
+                          b 15 806
+                          | руб.
+                  .swiper-slide
+                    a(href="#").new-product-item
+                      .new-product-item__img
+                        img(src="assets/images/prod7.jpg",alt="")
+                        .view-prod
+                          | смотреть
+                          span.icon-right
+                      .new-product-item__txt
+                        .prod-txt Кольцо с/кд, КД4032ТОПАЗ, 478163
+                        .prod-price
+                          b 15 806
+                          | руб.
+                  .swiper-slide
+                    a(href="#").new-product-item
+                      .new-product-item__img
+                        img(src="assets/images/prod8.jpg",alt="")
+                        .view-prod
+                          | смотреть
+                          span.icon-right
+                      .new-product-item__txt
+                        .prod-txt Ладанка из красного золота «Николай Чудотворец» без камней, П006
+                        .prod-price
+                          b 15 806
+                          | руб.
+                  .swiper-slide
+                    a(href="#").new-product-item
+                      .new-product-item__img
+                        img(src="assets/images/prod4.jpg",alt="")
+                        .view-prod
+                          | смотреть
+                          span.icon-right
+                      .new-product-item__txt
+                        .prod-txt Ладанка из красного золота «Николай Чудотворец» без камней, П006              Ш003Б
+                        .prod-price
+                          b 15 806
+                          | руб.
+
+              .swiper-button-prev
+                span.icon-left-big
+              .swiper-button-next
+                span.icon-right-big
+        //news section
+        section.news-section
+          .container
+            .heading-section.align-center
+              span Новости и статьи
+            .grid
+              .grid-item.news-item
+                .news-item__img
+                  a(href="#")
+                    img(src="assets/images/news1.jpg",alt="")
+                .news-item__txt
+                  span Фотосессия Матеуса Лейте Насименто
+                  | Одним из знаковых событий уходящего года стала удивительная фотоссесия ведущего игрока ФК «Днепр» Матеуса Лейте Насименто и его жены Юлии в изысканных украшениях торговой марки Eurogold.
+                  br
+                  a(href="#")
+                    | читать далее
+                    i.icon-right
+              .grid-item.news-item
+                .news-item__img
+                  a(href="#")
+                    img(src="assets/images/news2.jpg",alt="")
+                .news-item__txt
+                  span Как носить браслеты
+                  | Каждая женщина неоднократно задавалась вопросом, как все-таки правильно носить браслеты, чтобы отвечать последним трендам моды. Предлагаем вам ознакомиться с наиболее популярными способами ношения браслетов в этом сезоне.
+                  br
+                  a(href="#")
+                    | читать далее
+                    i.icon-right
+              .grid-item.news-item
+                .news-item__img
+                  a(href="#")
+                    img(src="assets/images/news3.jpg",alt="")
+                .news-item__txt
+                  span Бриллиантовый этикет
+                  | Бриллианты — цари среди женских украшений, ведь каждая представительница прекрасного пола мечтает о шикарном сверкающем камне.
+                  br
+                  a(href="#")
+                    | читать далее
+                    i.icon-right
+              .grid-item.news-item
+                .news-item__txt
+                  span Победитель новогоднего конкурса от Eurogold.ua
+                  | Друзья, у нас снова приятные новости! Компания Eurogold.ua с радостью поздравляет победительницу нашего Предновогоднего конкурса «Выиграй золотой кулон!»
+                  br
+                  a(href="#")
+                    | читать далее
+                    i.icon-right
+
+
+            .align-center
+              a(href="#").all-testi.big-nav__det Еще новости
+        //social-section
+        section.social-section
+          .container
+            .row
+              .col.m6.s12
+                img(src="assets/images/soc1.jpg",alt="")
+              .col.m6.s12
+                img(src="assets/images/soc2.jpg",alt="")
+        //sec section
+        section.seo-section
+          .container
+            span.h1 Ювелирный интернет магазин Eurogold.ua
+            p Ювелирные украшения давно стали неотъемлемой частью повседневной жизни каждого современного человека. Они никогда не теряют свою актуальность и постоянно находятся на вершине модных трендов. На сегодняшний день изделия из благородных металлов – это не только стильное дополнение к одежде, но и способ самовыражения, который может подчеркнуть изысканность вкуса своего владельца. Правильно подобранный драгоценный аксессуар способен чудесным образом преобразить человека, добавив в его образ нотки совершенства. Современные мастера, руководствуясь свежими тенденциями модных течений, создают настоящие шедевры ювелирного искусства, воплощенные в золоте и драгоценных камнях. Кулоны, серьги, цепочки, брошки, браслеты, кольца и другие аксессуары, представленные в каталогах магазинов драгоценностей, имеют только одну цель — придавать облику оригинальность и привлекательность. Поэтому за все время своего существования человечество не придумало более значимого подарка, чем золотые украшения.
+            span.h2 Золотые изделия на любой вкус
+            p Компания «Eurogold» и ее ювелирный интернет-магазин приглашают вас совершить незабываемое путешествие в мир драгоценных аксессуаров на все случаи жизни. Мы работаем на украинском рынке золотых украшений уже более 15 лет и предлагаем только лучшие экземпляры изделий из благородных металлов от производителя. Выбору клиента представлено более 10 000 моделей ювелирной продукции, выполненных в различных формах и стилях. Восхитительные золотые украшения, собранные в эксклюзивные коллекции, являются гордостью нашей фирмы. В каждом кулоне, кольце и цепочке таится утонченность и чарующая красота истинного искусства. Профессиональные дизайнеры, работающие с ювелирным брендом «Eurogold» создали великолепные аксессуары, воистину достойные восхищения. Шикарный стиль, чистое сияние бриллиантов и плавные линии золота гармонично соединены в каждом изделии.
       //footer
       include _footer
 

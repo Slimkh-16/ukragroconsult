@@ -1,10 +1,6 @@
 header.header.clearfix
-  .container
-    .menu-button-general(data-activates="slide-out")
-      span
-      span
-      span
-    .header-top.clearfix
+  .header-top.clearfix
+    .container
       .header-top__left
         ul
           li
@@ -17,73 +13,82 @@ header.header.clearfix
             a(href="#") Новости
       .header-top__right
         | 1-800-987-65-43
-    .header-middle.clearfix
+  .header-middle.clearfix
+    include _cart
+    .container
+      .menu-button-general(data-activates="slide-out")
+        span
+        span
+        span
       .header-search
         form(action="#")
           button(type="submit")
-            span.icon-
+            span.icon-search
           input(type="text",value="",placeholder="Что вы ищете?")
       .header-logo
         a(href="#")
           img(src="images/Euro Gold - Logo.svg",alt="")
       .header-middle__right
         a(href="#").user-button
-          span.icon-user
+          span.icon-list-logo
           | Профиль
-        a(href="#").cart-button
+        a(href="#").cart-button.js_cart
           span.icon-cart
           | Ваш заказ
           span.count-cart 1
-    .header-bottom
+  .header-bottom
+    .container
       .navigation-catalog
         ul
           li
             a(href="#",data-activates='drop-catalog-1').dropdown-head-nav
-              span Изделия с   бриллиантами
+              i Изделия с   бриллиантами
+            ul#drop-catalog-1.dropdown-content
+              li
+                a(href='#') Женские кольца
+              li
+                a(href='#') Мужские кольца
+              li
+                a(href='#') Серьги
+              li
+                a(href='#') Кресты
+              li
+                a(href="#") Кулоны
           li
             a(href="#",data-activates='drop-catalog-2').dropdown-head-nav
-              span Женские  кольца
+              i Женские  кольца
+            ul#drop-catalog-2.dropdown-content
+              li
+                a(href='#') Золотые кольца
+              li
+                a(href='#') Серебрянные кольца
           li
             a(href="#")
-              span Мужские  печатки
+              i Мужские  печатки
           li
             a(href="#")
-              span Серьги
+              i Серьги
           li
             a(href="#")
-              span Обручальные кольца
+              i Обручальные кольца
+          li
+            span
+              i Браслеты
           li
             a(href="#")
-              span Браслеты
+              i Цепи
           li
             a(href="#")
-              span Цепи
+              i Кулоны
           li
             a(href="#")
-              span Кулоны
+              i Кресты, ладанки
           li
             a(href="#")
-              span Кресты, ладанки
-          li
-            a(href="#")
-              span Колье, шнурки, булавки
+              i Колье, шнурки, булавки
 
-        ul#drop-catalog-1.dropdown-content
-          li
-            a(href='#') Женские кольца
-          li
-            a(href='#') Мужские кольца
-          li
-            a(href='#') Серьги
-          li
-            a(href='#') Кресты
-          li
-            a(href="#") Кулоны
-        ul#drop-catalog-2.dropdown-content
-          li
-            a(href='#') Золотые кольца
-          li
-            a(href='#') Серебрянные кольца
+
+
 
 
 

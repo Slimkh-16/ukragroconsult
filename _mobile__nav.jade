@@ -1,92 +1,67 @@
-// mp-menu
-.mobile-level-menu
-  .menu-button
-    span
-    span
-    span
-
-  .mobile-level-level.clearfix
-    ul.mobile-level-ul
-      li
-        a.icon-dashboard(href='#').mb-lev-1
-          span Dashboard
-        .mobile-level
-          a.mobile-level-back(href='#')
-            span.icon-back-menu
-            | Forecasts S&D
+.left-fixed-nav.side-nav#slide-out
+  .left-fixed-nav__head
+    img(src="images/Euro Gold - Logo.svg",alt="")
+  .left-fixed-nav__body
+    .header-search
+      form(action="#")
+        button(type="submit")
+          span.icon-search
+        input(type="text",value="",placeholder="Что вы ищете?")
+    .header-middle__right
+      a(href="#").user-button
+        span.icon-list-logo
+        | Профиль
+      a(href="#").cart-button
+        span.icon-cart
+        | Ваш заказ
+        span.count-cart 1
+    .left-fixed-nav__over
+      ul
+        li.with-menu
+          a(href="#").with-menu-lnk
+            | Изделия с   бриллиантами
+          span.drop-nav.icon-bottom
           ul
             li
-              span S&D Map
+              a(href='#') Женские кольца
             li
-              a(href='#') UkrAgroConsult
+              a(href='#') Мужские кольца
             li
-              a(href='#') USDA
-      li
-        a.icon-data-menu(href='#').mb-lev-1
-          span Data
-        .mobile-level
-          a.mobile-level-back(href='#')
-            span.icon-back-menu
-            | Forecasts S&D
+              a(href='#') Серьги
+            li
+              a(href='#') Кресты
+            li
+              a(href="#") Кулоны
+        li.with-menu
+          a(href="#")
+            | Женские  кольца
+          span.drop-nav.icon-bottom
           ul
             li
-              a(href='#') National Geographic
+              a(href='#') Золотые кольца
             li
-              a(href='#') Scientific American
-            li
-              a(href='#') The Spectator
-            li
-              a(href='#') The Rambler
-            li
-              a(href='#') Physics World
-            li
-              a(href='#') The New Scientist
-      li
-        a.icon-tools-menu(href='#').mb-lev-1
-          span Tools
-        .mobile-level
-          a.mobile-level-back(href='#')
-            span.icon-back-menu
-            | Forecasts S&D
-          ul
-            li
-              a(href='#') National Geographic
-            li
-              a(href='#') Scientific American
-            li
-              a(href='#') The Spectator
-            li
-              a(href='#') The Rambler
-            li
-              a(href='#') Physics World
-            li
-              a(href='#') The New Scientist
-      li
-        a.icon-community-menu(href='#').mb-lev-1
-          span Community
-        .mobile-level
-          a.mobile-level-back(href='#')
-            span.icon-back-menu
-            | Forecasts S&D
-          ul
-            li
-              a(href='#') S&D Map
-            li
-              a(href='#') UkrAgroConsult
-            li
-              a(href='#') USDA
-      li
-        a.icon-news-menu(href='#').mb-lev-1
-          span News
-        .mobile-level
-          a.mobile-level-back(href='#')
-            span.icon-back-menu
-            | Forecasts S&D
-          ul
-            li
-              a(href='#') S&D Map
-            li
-              a(href='#') UkrAgroConsult
-            li
-              a(href='#') USDA
-// /mp-menu
+              a(href='#') Серебрянные кольца
+        li
+          a(href="#")
+            | Мужские  печатки
+        li
+          a(href="#")
+            | Серьги
+        li
+          a(href="#")
+            | Обручальные кольца
+        li
+          span
+            | Браслеты
+        li
+          a(href="#")
+            | Цепи
+        li
+          a(href="#")
+            | Кулоны
+        li
+          a(href="#")
+            | Кресты, ладанки
+        li
+          a(href="#")
+            | Колье, шнурки, булавки

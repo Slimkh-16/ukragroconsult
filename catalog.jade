@@ -1,0 +1,629 @@
+doctype html
+html
+  head
+    include _head
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+  body.inner-page
+    noscript
+      div
+        strong Для полной функциональности этого сайта необходимо включить JavaScript. Вот 
+        a(href="https://artjoker.ua/ru/blog/how-to-enable-javascript/" target="_blank") инструкции,
+        | как включить JavaScript в вашем браузере. 
+    //if lte IE 8
+      p.off-js
+        | Ваш браузер устарел, пожалуйста 
+        b обновите
+        |  его.
+    // PRELOADER
+    include _preloader
+    // PRELOADER
+    .page-wrap
+      // wrapper start
+      include _mobile__nav
+      .wrapper
+        .overlay-cart
+        // header SECTION
+        include _header
+        // header SECTION
+        //catalog section
+        section.catalog-section
+          .container
+            .breadcrumbs
+              ul
+                li
+                  a(href="#") Ювелирные украшения
+                li
+                  span Серьги
+            .catalog-box
+              .heading-big Золотые серьги
+              .row
+                .col.l3.m4.s12.catalog-sidebar
+                  .filter-box.visible
+                    .filter-box__head Виды украшений
+                      span.refresh-filter сбросить
+                    .filter-bix__body(style="display:block")
+                      .filter-item
+                        input#check1(type="checkbox").filled-in
+                        label(for="check1") Украшения со скидкой 70%
+                      .filter-item
+                        input#check2(type="checkbox").filled-in
+                        label(for="check2") С английским замком
+                      .filter-item
+                        input#check3(type="checkbox").filled-in
+                        label(for="check3") Серьги-кольца
+                      .filter-item
+                        input#check4(type="checkbox").filled-in
+                        label(for="check4") Пусеты
+                      .filter-item
+                        input#check5(type="checkbox").filled-in
+                        label(for="check5") Swarovski
+                      .filter-item
+                        input#check6(type="checkbox").filled-in
+                        label(for="check6") Подвески
+                      .filter-item
+                        input#check7(type="checkbox").filled-in
+                        label(for="check7") Детские
+                      .filter-item
+                        input#check8(type="checkbox").filled-in
+                        label(for="check8") Мужские
+                      .filter-item
+                        input#check9(type="checkbox").filled-in
+                        label(for="check9") Из белого золота
+                      .filter-item
+                        input#check10(type="checkbox").filled-in
+                        label(for="check10") На петле
+                  .filter-box
+                    .filter-box__head Цвет металла
+                      span.refresh-filter сбросить
+                    .filter-bix__body
+                      - for (var x = 11; x < 18; x++)
+                        .filter-item
+                          input(id="check#{x}",type="checkbox").filled-in
+                          label(for="check#{x}")
+                            | list item #{x}
+                  .filter-box
+                    .filter-box__head Камень
+                      span.refresh-filter сбросить
+                    .filter-bix__body
+                      - for (var x = 18; x < 25; x++)
+                        .filter-item
+                          input(id="check#{x}",type="checkbox").filled-in
+                          label(for="check#{x}")
+                            | list item #{x}
+                  .filter-box.visible
+                    .filter-box__head Цвет камня
+                      span.refresh-filter сбросить
+                    .filter-bix__body(style="display:block")
+                      for color,i in ['белый', 'голубой', 'желтый','зеленый','коньяк','красный','лаванда']
+                        .filter-item
+                          input(id="check-color#{i}",type="checkbox").filled-in
+                          label(for="check-color#{i}")
+                            span(class="check-color color--#{i}")
+                            | #{color}
+                  .filter-box
+                    .filter-box__head Цена
+                      span.refresh-filter сбросить
+                .col.l9.m8.s12.catalog-body
+                  .catalog-body-filter
+                    .row
+                      .col.l4.m6.s12
+                        .filter-catalog-item
+                          input#flt1(type="checkbox")
+                          label(for="flt1")
+                            img(src="images/flt1.png",alt="")
+                            span Cо скидкой 70%
+                        .filter-catalog-item
+                          input#flt2(type="checkbox")
+                          label(for="flt2")
+                            img(src="images/flt2.png",alt="")
+                            span Пусеты
+                      .col.l4.m6.s12
+                        .filter-catalog-item
+                          input#flt3(type="checkbox")
+                          label(for="flt3")
+                            img(src="images/flt3.png",alt="")
+                            span С английским замком
+                        .filter-catalog-item
+                          input#flt4(type="checkbox")
+                          label(for="flt4")
+                            img(src="images/flt4.png",alt="")
+                            span Swarovski
+                      .col.l4.m6.s12
+                        .filter-catalog-item
+                          input#flt5(type="checkbox")
+                          label(for="flt5")
+                            img(src="images/flt5.png",alt="")
+                            span Серьги-кольца
+                        .filter-catalog-item
+                          input#flt6(type="checkbox")
+                          label(for="flt6")
+                            img(src="images/flt6.png",alt="")
+                            span Серьги-подвески
+                    .clearfix
+                      .catalog-body-filter__left
+                        span.flt-label Сортировать
+                        select
+                          option(value="1") недорогие вначале
+                          option(value="2") недорогие вначале
+                          option(value="3") недорогие вначале
+                        select
+                          option(value="1") 12
+                          option(value="2") 22
+                          option(value="3") 33
+                        span.flt-label на странице
+                      .catalog-body-filter__right
+                        .pagination-section
+                          a(href="#").prev-page < пред.
+                          ul
+                            li
+                              span 1
+                            li
+                              a(href="#") 2
+                            li
+                              a(href="#") 3
+                            li
+                              a(href="#") 4
+                          a(href="#").next-page след. >
+
+                  .product-list
+                    .row
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            .product-status.product-status--top
+                              | top
+                            .product-with-video.span.icon-video
+                            img(src="assets/images/prod1.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+
+
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            .product-status.product-status--sale
+                              | Скидка
+                            .product-with-video.span.icon-video
+                            img(src="assets/images/prod2.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            .product-status.product-status--sale
+                              | Скидка
+                            img(src="assets/images/prod3.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            img(src="assets/images/prod1.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            img(src="assets/images/prod1.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            img(src="assets/images/prod1.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            .product-status.product-status--top
+                              | top
+                            .product-with-video.span.icon-video
+                            img(src="assets/images/prod1.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+
+
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            .product-status.product-status--sale
+                              | Скидка
+                            .product-with-video.span.icon-video
+                            img(src="assets/images/prod2.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            .product-status.product-status--new
+                              | Новинка
+                            img(src="assets/images/prod3.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            img(src="assets/images/prod1.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            img(src="assets/images/prod1.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+                      .col.l4.m6.s6
+                        a(href="#").product-item
+                          .product-item__img
+                            img(src="assets/images/prod1.jpg",alt="")
+                          .product-item__txt
+                            .prod-txt Золотые серьги в белом золоте с бриллиантами «Бриллиантовая изящность», С7412/1 белом золоте с бриллиантами «Брил
+                            .prod-price
+                              b 48 990
+                              | руб.
+                          .product-item__hover-box
+                            table
+                              tr
+                                td Металл:
+                                td золото
+                              tr
+                                td Вес изделия:
+                                td 3.54 g
+                              tr
+                                td Цвет металла:
+                                td white
+                              tr
+                                td Камень:
+                                td бриллиант
+                            .product-item__button
+                              span.to-wishlist
+                                span.icon-butt
+                                  img(src="images/heart.svg",alt="")
+                                  img(src="images/heart-fill.svg",alt="").fill
+                                | Нравится
+                              span.to-compare
+                                span.icon-butt
+                                  img(src="images/weight.svg",alt="")
+                                  img(src="images/weight-fill.svg",alt="").fill
+                                | К сравнению
+                    .clearfix.align-center
+                      a(href="#").more-products.all-testi.big-nav__det Показать еще
+                    .bottom-pagintaion.clearfix
+                      .catalog-body-filter__right
+                        .pagination-section
+                          a(href="#").prev-page < пред.
+                          ul
+                            li
+                              span 1
+                            li
+                              a(href="#") 2
+                            li
+                              a(href="#") 3
+                            li
+                              a(href="#") 4
+                          a(href="#").next-page след. >
+        //sec section
+        section.seo-section
+          .container
+            span.h1 Ювелирный интернет магазин Eurogold.ua
+            p Ювелирные украшения давно стали неотъемлемой частью повседневной жизни каждого современного человека. Они никогда не теряют свою актуальность и постоянно находятся на вершине модных трендов. На сегодняшний день изделия из благородных металлов – это не только стильное дополнение к одежде, но и способ самовыражения, который может подчеркнуть изысканность вкуса своего владельца. Правильно подобранный драгоценный аксессуар способен чудесным образом преобразить человека, добавив в его образ нотки совершенства. Современные мастера, руководствуясь свежими тенденциями модных течений, создают настоящие шедевры ювелирного искусства, воплощенные в золоте и драгоценных камнях. Кулоны, серьги, цепочки, брошки, браслеты, кольца и другие аксессуары, представленные в каталогах магазинов драгоценностей, имеют только одну цель — придавать облику оригинальность и привлекательность. Поэтому за все время своего существования человечество не придумало более значимого подарка, чем золотые украшения.
+            span.h2 Золотые изделия на любой вкус
+            p Компания «Eurogold» и ее ювелирный интернет-магазин приглашают вас совершить незабываемое путешествие в мир драгоценных аксессуаров на все случаи жизни. Мы работаем на украинском рынке золотых украшений уже более 15 лет и предлагаем только лучшие экземпляры изделий из благородных металлов от производителя. Выбору клиента представлено более 10 000 моделей ювелирной продукции, выполненных в различных формах и стилях. Восхитительные золотые украшения, собранные в эксклюзивные коллекции, являются гордостью нашей фирмы. В каждом кулоне, кольце и цепочке таится утонченность и чарующая красота истинного искусства. Профессиональные дизайнеры, работающие с ювелирным брендом «Eurogold» создали великолепные аксессуары, воистину достойные восхищения. Шикарный стиль, чистое сияние бриллиантов и плавные линии золота гармонично соединены в каждом изделии.
+      //footer
+      include _footer
+
